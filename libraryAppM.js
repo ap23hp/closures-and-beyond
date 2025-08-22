@@ -31,11 +31,26 @@ const LibraryModule = (() => {
     return book || "Book not found";
   };
 
-const allbooksbyAuthor = (author) => {
-for(let i=0;i<libraryArray.length;i++){
-  return  libraryArray[i].author===author ? libraryArray[i]: console.log(`No booksfound by this author`)
-}
-};
+  // const allbooksbyAuthor = (author) => {
+  //     let matches=[]
+  // for(let i=0;i<libraryArray.length;i++){
+  //   if(libraryArray[i].author===author){
+  // matches.push([libraryArray[i]])
+  //   }  if (matches.length === 0) {
+  //     console.table(`No books found by this author`);
+  //   }
+  // }
+
+  //  return matches
+  // };
+
+  const allbooksbyAuthor = (author) => {
+    const matches = libraryArray.filter((ele) => ele.author === author);
+    if (matches.length === 0) {
+      console.log(`No books found by this author`);
+    }
+    return matches;
+  };
   return {
     addBook,
     removeBook,
@@ -48,9 +63,9 @@ for(let i=0;i<libraryArray.length;i++){
 
 const book1 = Bookfactory("1984", "George Orwell", 328, false);
 const book2 = Bookfactory("Animal Farm", "George Orwell", 112, true);
-const book3 = Bookfactory("The Alchemist", "Paulo Coelho", 208, true);
-const book4 = Bookfactory("Brida", "Paulo Coelho", 300, false);
-const book5 = Bookfactory("Veronika Decides to Die", "Paulo Coelho", 272, true);
+const book3 = Bookfactory("The Alchemist", "Paulo Coelhooo", 208, true);
+const book4 = Bookfactory("Brida", "Paulo Coelhoo", 300, false);
+const book5 = Bookfactory("Veronika Decides to Die", "Paulo Coelho00", 272, true);
 const book6 = Bookfactory(
   "The Great Gatsby",
   "F. Scott Fitzgerald",
@@ -73,8 +88,9 @@ console.table(LibraryModule.getBooks());
 // console.log(LibraryModule.findBook("1984"));
 // console.log(LibraryModule.findBook("Harry Potter"));
 
-//console.log(LibraryModule.allbooksbyAuthor("George Orwell"))
+console.log(LibraryModule.allbooksbyAuthor("George Orwell"));
 // should return book1 and book2
 
 //console.log(allbooksbyAuthor("Paulo Coelho"));
 // should return book3, book4, book5
+console.table(LibraryModule.allbooksbyAuthor("Paulo Coelho"));
